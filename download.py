@@ -1,13 +1,8 @@
-from transformers import GPTJForCausalLM, GPT2Tokenizer
-import torch
-
+from transformers import pipeline
 
 def download_model():
-    GPTJForCausalLM.from_pretrained(
-        "EleutherAI/gpt-j-6B", revision="float16", torch_dtype=torch.float16, low_cpu_mem_usage=True
-    )
-    GPT2Tokenizer.from_pretrained("EleutherAI/gpt-j-6B")
-
+    # do a dry run of loading the huggingface model, which will download weights
+    pipeline('fill-mask', model='bert-base-uncased')
 
 if __name__ == "__main__":
     download_model()
